@@ -33,7 +33,7 @@ This document serves as a readme guide to the cloud computing end term project  
 - we will also make a folder named "apache2docker" and keep all our files here. We also move the downloaded file to this folder.
 - Inorder to create our own base os image we will create a file with the name "Dockerfile" and write the following code in mac terminal
 
-## Installation | Step -1 | Create base image from scratch
+## Installation | Step -1 | Create base image from scratch 
 
 Making a folder to manage files properly
 

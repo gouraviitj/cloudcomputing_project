@@ -19,47 +19,57 @@ This document serves as a readme guide to the cloud computing end term project  
  - VM operating system - Ububtu 20.04 LTS
  - WSL2
  
-
-## Brief Process:
-1. Download the image file from docker hub
+## Detailed Process
 
 
-## Process | Step 1 
+1. We started out by installing VirtualBox application on our host machine in order to be able to run a virtual machine on VirtualBox.
 
-- First of all we start out by creating our own base os image and do not make any use of base os images that are available on Docker Hub. We create our own base os image of the ubuntu 20.04 os from scratch.
-- Inorder to create our own base os image, we first download the ubuntu-base-20.04-base-amd.tar.gz OS file from this [link.](ubuntu-base-20.04.1-base-amd64.tar.gz)
-- After we download the ubuntu-base-20.04-base-amd.tar.gz file from the above link, we now go ahead create our own base os image using the downloaded file.
-- Please note to keep the downloaded file and "Dockerfile" at the same file path. I have not uploaded the large file here on github. 
-- we will also make a folder named "apache2docker" and keep all our files here. We also move the downloaded file to this folder.
-- Inorder to create our own base os image we will create a file with the name "Dockerfile" and write the following code in mac terminal
+2. After installing the VirtualBox we went ahead and downloaded the ubuntu 20.04 LTS iso image in order to run a linux-ubuntu based operating system on our virtual machine    	powered by VirtualBox.
 
-## Installation | Step -1 | Create base image from scratch 
+3. We then completed setting up the VM by allocating the RAM size, hard disk space and other permission settings.
 
-Making a folder to manage files properly
+4. Finally, we then powered up the Virtual machine which was running using the path to the ubuntu based iso image.
 
-```bash
-  mkdir apache2docker
-  cd apache2docker
-```
+5. After the Vm was up and running we then went ahead and installed Ububtu 20.04 LTS as the operating system for the virtual machine. It did include the steps like creating 	administrator accounts and selecting add ons that come with the OS.
 
-Create a file named "Dockerfile"
-```bash
-sudo nano Dockerfile
-```
+6. The next step after the OS was installed in our Virtual machine’s operating system was to install all the required dependencies and libraries on the OS.
 
-Write the following code in Dockerfile to create a base os image and save the file
-- Ensure that "ubuntu-base-20.04.1-base-amd64.tar.gz" and "Dockerfile" are on the same file path
-```bash
-FROM scratch
-LABEL org.label-schema.schema-version="1.0" \
-	org.label-schema.name="Ubuntu Base Image" \
-	maintainer="gouravsanghai" \
-	org.label-schema.vcs-description="ubuntu Base Image-minimal"\
-	org.label.schema.docker.cmd="docker run -it ubuntu sh" \
-	org.label-schema.vendor="ubuntu" \
-	org.label-schema.license="GPLv2" \
-	org.label-schema.build-date="20190801"
-ADD ubuntu-base-20.04.1-base-amd64.tar.gz /
-CMD ["/bin/bash"]
+7. We went ahead at first and installed the pip packet manager using the command: - -	- 	sudo apt-get install python-pip3
 
-```
+8. After installing the pip packet manager we went ahead and installed docker using the following command: 
+	-sudo apt install docker.io
+
+9. Once we had docker in place, it was now time to connect our docker in the VM with the docker hub cloud account that we had on https://hub.docker.com
+
+10. For this we used the command - docker login and entered our username and password
+
+11. After logging into our docker hub account, it was now time to pull images from docker hub that catered to the TICK stack.
+
+12. We used the following command to pull the respective four components of the TICK stack:
+	-docker pull telegraf
+	-docker pull kapacitor
+	-docker pull influxdb
+	-docker pull chronograf
+
+13.After pulling the images from docker hub we checked the status of the images using the following command :
+	-docker images
+
+14.Once we confirmed that we had all the necessary images are in place, we then went ahead and started creating all the necessary containers that depict all the four 	    	different components of the TICK stack.
+
+15. In order to run the container we used the following commands:
+	-docker run telegraph
+	-docker run kapacitor
+	-docker run influxdb
+	-docker run chronograf
+
+16. After we entered and run the above command we were able to launch and run the docker container for all the different four components of the TICK stack.
+
+17. Finally, then we went ahead and checked the status of the container using the following command:
+	-docker container ls
+	
+18.	The process was viewed and tracked in the localhost url using chronograf.
+
+
+
+
+
